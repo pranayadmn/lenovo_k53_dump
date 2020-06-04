@@ -1,0 +1,10 @@
+ro.product.model=Lenovo K53a48
+ro.product.device=K53a48
+ro.product.ota.model=LenovoK53a48_N_ROW
+ro.lenovo.series=Lenovo K6 NOTE
+persist.radio.multisim.config=dsds
+ro.lenovo.sim=dsds
+ro.product.board=S82939AA1
+persist.sys.ovr.carriercfg=false
+
+ro.build.fingerprint=Lenovo/karatep/K53a48:7.0/NRD90N/K53_S228_171114_ROW:user/release-keys

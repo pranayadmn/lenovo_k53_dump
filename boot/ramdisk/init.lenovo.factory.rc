@@ -1,0 +1,11 @@
+service mmi_kmsg /system/bin/init.kmsg_log.sh
+    user root
+    disabled
+
+service mmi_main /system/bin/init.main_log.sh
+    user root
+    disabled
+
+on mmi
+    start mmi_kmsg
+    start mmi_main

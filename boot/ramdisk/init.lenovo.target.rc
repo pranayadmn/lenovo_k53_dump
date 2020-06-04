@@ -1,0 +1,6 @@
+# init.lenovo.target.rc in lenovo device karatep_c78
+#
+# when init rc content is common between lenovo different device,
+# please write it into lenovo/common/rootdir/etc/init.lenovo.rc
+#
+import /init.lenovo.common.rc

@@ -1,0 +1,7 @@
+mcfg_sw/3uk.mbn
+mcfg_sw/ntel.mbn
+mcfg_sw/rjil.mbn
+mcfg_sw/gcf.mbn
+mcfg_sw/smtf.mbn
+mcfg_sw/row.mbn
+mcfg_sw/ytl.mbn

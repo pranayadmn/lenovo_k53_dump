@@ -1,0 +1,13 @@
+# karatep-user 7.0 NRD90N K53_S228_171114_ROW release-keys
+- manufacturer: lenovo
+- platform: msm8937
+- codename: K53
+- flavor: karatep-user
+- release: 7.0
+- id: NRD90N
+- incremental: K53_S228_171114_ROW
+- tags: release-keys
+- fingerprint: Lenovo/karatep/K53:7.0/NRD90N/K53_S228_171114_ROW:user/release-keys
+- brand: Lenovo
+- branch: karatep-user-7.0-NRD90N-K53_S228_171114_ROW-release-keys
+- repo: lenovo_k53_dump
