@@ -1,0 +1,78 @@
+# Copyright (c) 2009-2012, 2014-2015, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of The Linux Foundation nor
+#       the names of its contributors may be used to endorse or promote
+#       products derived from this software without specific prior written
+#       permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+import /init.lenovo.target.rc
+
+import /init.lenovo.log.rc
+import /init.lenovo.crash.rc
+
+on boot
+    chown system system /sys/devices/soc/soc:fpc1020/irq
+    chown system system /sys/devices/soc/soc:fpc1020/wakeup_enable
+    chown system system /sys/class/input/input1/device/ftsmcaptest
+    chown system system /sys/class/input/input1/device/ftsdumpinfo
+    chown system system /sys/class/input/input1/device/wake_gesture
+
+# Avoid crash when access /d/gpio or /sys/private/tlmm
+    write /sys/private/tlmm_tz 0
+    write /sys/private/tlmm_tz 1
+    write /sys/private/tlmm_tz 2
+    write /sys/private/tlmm_tz 3
+
+    # sar sensor
+    chown system system /sys/bus/i2c/drivers/sx9310/8-0028/reg
+    chmod 0664 /sys/bus/i2c/drivers/sx9310/8-0028/reg
+    chown radio system /sys/bus/i2c/drivers/sx9310/8-0028/calibrate
+    chmod 0664 /sys/bus/i2c/drivers/sx9310/8-0028/calibrate
+    chown system system /sys/bus/i2c/drivers/sx9310/8-0028/status
+    chmod 0664 /sys/bus/i2c/drivers/sx9310/8-0028/status
+    chown system system /sys/bus/i2c/drivers/sx9310/8-0028/enable
+    chmod 0664 /sys/bus/i2c/drivers/sx9310/8-0028/enable
+
+#[lenovo_fw,zhangxf20,integrate_fingerprint], "add fingerprint daemon", add
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group system
+
+#[lenovo_fw,zhangxf,integrate_fingerprint], end
+
+service sar_config /system/bin/sh /system/bin/sar_config.sh
+    class late_start
+    oneshot
+
+#for lenovo sn
+service lenovo_sn /system/bin/lenovo_sn
+   class main
+   group system radio
+   user root
+   disabled
+   oneshot
+
+#auto start lenovo_sn
+on property:sys.boot_completed=1
+    start lenovo_sn

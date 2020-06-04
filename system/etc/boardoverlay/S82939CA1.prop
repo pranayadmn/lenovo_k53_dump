@@ -1,0 +1,10 @@
+ro.product.model=Lenovo K53a48
+ro.product.device=K53a48
+ro.product.ota.model=LenovoK53a48_ROW
+ro.lenovo.series=Lenovo K6 NOTE
+persist.radio.multisim.config=single
+ro.lenovo.sim=single
+ro.product.board=S82939CA1
+persist.sys.ovr.carriercfg=false
+
+ro.build.fingerprint=Lenovo/karatep/K53a48:6.0.1/MMB29M/K53_S123_170216_ROW:user/release-keys

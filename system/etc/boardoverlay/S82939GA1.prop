@@ -1,0 +1,10 @@
+ro.product.model=Lenovo K53b37
+ro.product.device=K53b37
+ro.product.ota.model=LenovoK53b37_ROW
+ro.lenovo.series=Lenovo K6 NOTE
+persist.radio.multisim.config=single
+ro.lenovo.sim=single
+ro.product.board=S82939GA1
+persist.sys.ovr.carriercfg=true
+
+ro.build.fingerprint=Lenovo/karatep/K53b37:6.0.1/MMB29M/K53_S123_170216_ROW:user/release-keys
